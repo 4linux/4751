@@ -1,0 +1,8 @@
+127.0.0.1	localhost.localdomain			localhost
+172.16.1.101	security.dexter.com.br			security
+172.16.1.102	virtualization-host.dexter.com.br	virtualization-host
+172.16.1.103	storage.dexter.com.br			storage
+172.16.1.104	fileserver.dexter.com.br		fileserver
+172.16.1.105	ipaserver.dexter.com.br			ipaserver
+172.16.1.106	webserver.dexter.com.br			webserver
+172.16.1.107	mailserver.dexter.com.br		mailserver

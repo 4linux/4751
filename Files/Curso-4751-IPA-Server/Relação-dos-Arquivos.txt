@@ -1,0 +1,46 @@
+Distribuição: CentOS 7
+
+Quantidade de memória: 1536 MB
+
+Configuração de rede no VirtualBox:
+
+Adaptador 1: host-only (172.16.1.1)
+
+Arquivos:
+
+/etc/hosts
+/etc/hostname
+/etc/sysconfig/network-scripts/ifcfg-enp0s3
+/etc/sudoers.d/98_4linux
+/etc/sysconfig/selinux
+
+Deixar o Firewalld desativado
+
+sudo systemctl disable firewalld
+
+Pacotes instalados:
+
+ipa-server
+ipa-server-dns
+ipa-client
+ipa-client-common
+ipa-common
+vsftpd
+
+Ativar na inicialização os serviços do IPA e VSftpd
+
+systemctl enable ipa
+systemctl enable vsftpd
+
+Configurar o IPA Server
+
+ipa-server-install -U --hostname=ipaserver.dexter.com.br --domain=ipaserver.dexter.com.br --realm=DEXTER.COM.BR -p 'curso4linux' -a 'curso4linux' --setup-dns --forward-policy=only --forwarder=8.8.8.8
+
+Adicionar usuário linus no IPA Server
+
+echo curso4linux | kinit admin
+echo 4linux | ipa user-add linus --first='Linus' --last='Torvalds' --cn='Linus Torvalds' --password
+
+Copiar o arquivo /etc/ipa/ca.crt para /var/ftp/pub/
+
+cp /etc/ipa/ca.crt /var/ftp/pub/
